@@ -14,6 +14,8 @@ getOptions().then(({ tags: tagList, authors: authorList }) => {
   tags = tagList;
   authors = authorList;
 });
+
+// refresh tags and authors every hour
 setTimeout(async () => {
   getOptions().then(({ tags: tagList, authors: authorList }) => {
     tags = tagList;

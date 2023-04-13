@@ -74,11 +74,6 @@ async function getPosts() {
 
 async function getPost(id) {
   const notionPage = await notion.pages.retrieve({ page_id: id });
-  const content = await notion.blocks.children.list({
-    block_id: id,
-    page_size: 100,
-  });
-  notionPage.content = content.results;
   const markdown = await notionMarkdown(id);
   notionPage.content = markdown;
   return fromNotionObject(notionPage);
