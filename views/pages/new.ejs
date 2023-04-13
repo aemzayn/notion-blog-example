@@ -1,0 +1,42 @@
+<%- include('../partials/head.ejs') %>
+<form action="/create-post" method="post" class="border-bottom">
+  <div class="row">
+    <div class="col-12 col-md mb-3">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        required
+        class="form-control"
+      />
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md mb-3">
+        <label for="tagIds">Tags</label>
+        <select name="tagIds" id="tagIds" class="form-select" multiple required>
+          <% tags.forEach(tag => { %>
+          <option value="<%= tag.id %>"><%= tag.name %></option>
+          <% }) %>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md mb-3">
+        <label for="authors">Author</label>
+        <select name="authors" id="authors" class="form-select" required>
+          <% authors.forEach(author => { %>
+          <option value="<%= author.id %>"><%= author.name %></option>
+          <% }) %>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-3 ml-auto">
+      Create new post
+    </button>
+  </div>
+</form>
+<%- include('../partials/end.ejs') %>

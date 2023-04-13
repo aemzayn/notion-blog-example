@@ -1,0 +1,14 @@
+<%- include('../partials/head.ejs') %>
+<h1><%= post.title %></h1>
+<div>
+  <% post.tags.forEach(tag => { %>
+  <span class="badge" style="background-color: <%= tag.color %>"
+    ><%= tag.name %></span
+  >
+  <% }) %>
+</div>
+<div>
+  <p>Author: <%= post.authors.name %></p>
+</div>
+<div><%- post.content %></div>
+<%- include('../partials/end.ejs') %>
