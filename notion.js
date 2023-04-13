@@ -7,6 +7,7 @@ dotenv.config();
 
 const notion = new Client({ auth: process.env.NOTION_KEY });
 const n2m = new NotionToMarkdown({ notionClient: notion });
+
 const databaseId = process.env.NOTION_DATABASE_ID;
 const propertyId = {
   title: process.env.NOTION_TITLE_ID,
@@ -14,6 +15,16 @@ const propertyId = {
   authors: process.env.NOTION_AUTHOR_ID,
   createdTime: process.env.NOTION_CREATED_TIME_ID,
 };
+
+async function getPropertiesId() {
+  const response = await notion.databases.retrieve({
+    database_id: databaseId,
+  });
+  const properties = notionPropertiesById(response.properties);
+  console.log(properties);
+}
+
+// getPropertiesId()
 
 async function getOptions() {
   try {
